@@ -1,0 +1,33 @@
+Bảng admin: admin_id, admin_email,admin_name,admin_pass,admin_phone
+Bảng category: cate_id, cate_name, cate_desc, cate_status(id, tên, mô tả, tình trạng)
+Bảng brand:brand_id, brand_name, brand_desc, brand_status(id, tên, mô tả, tình trạng) thương hiệu
+Bảng phòng: room_id, room_name, room_status(id, tên, mô tả, tình trạng)
+Bảng product:pro_id, pro_name, cate_id, brand_id, room_id, pro_desc, pro_price, pro_img, pro_size, pro_color, pro_material, pro_status
+Bảng customers: cus_id, cus_name, cus_email, cus_pass, cus_phone
+Bảng Shipping: ship_id, cus_id, ship_name, ship_email, ship_address, ship_phone, ship_method(hình thức thanh toán)
+Bảng order: order_id, cus_id, ship_id, order_code(Mã code đơn hàng), order_status(Trạng thái đơn hàng)       (Đơn hàng)
+Bảng order_detail: order_details_id, order_code, pro_id, pro_name, pro_price, pro_sales_qty,pro_coupon, pro_fee(Chi tiết đơn hàng)
+Bảng coupon: coupon_id,'coupon_name', 'coupon_code', 'coupon_qty','coupon_number', 'coupon_condition': id, tên mã, mã, số lượng mã, %giảm, cách giảm
+Bảng feeship(Giá ship): fee_id, fee_matp, fee_maqh, fee_xaid,fee_feeship: id, mã tỉnh/tp, mã qh, mã xã/phường, giá ship
+Bảng slider: slider_id,Slider_name, slider_desc, slider_img, slider_status
+Bảng roles: role_id, role_name
+Bảng admin_roles: admin_roles_id, admin_admin_id, roles_role_id
+Bảng cate_post(Danh mục bài viết):cate_post_id, cate_post_name,cate_post_desc,cate_post_status
+Bảng post: post_id, post_title(Tiêu đề bài viết),post_desc(Tóm tắt bài viết),post_content(Nội dung bài viết),post_slug,post_status,post_img
+php artisan make:controller CartController
+php artisan make:migration customer --create=customers
+php artisan migrate
+Mô hình MVC:
+model: làm nhiệm vụ với DB
+view: nhiệm vụ hiển thị người dùng
+controller: kết nối giữa model+view
+$ php artisan make:model Coupon
+//Cài in pdf
+require barryvdh/laravel-dompdf      //câu lệnh cài gitbase
+//điền 2 câu lệnh dưới vào config app
+Barryvdh\DomPDF\ServiceProvider::class,
+
+'PDF' => Barryvdh\DomPDF\Facade::class,
+Khi mặc định auth tự động nó lấy bên user, v nên phải đổi bên config.auth
+blade trong provider là tương tác người dùng
+sửa tên gallery vs tiền ship bằng ajax
